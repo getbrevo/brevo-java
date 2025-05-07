@@ -17,18 +17,20 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.ObjectUtils;
 
+import java.util.List;
+
 /**
  * GetSegments
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2024-04-17T12:57:43.398+05:30")
 public class GetSegments {
   @SerializedName("segments")
-  private GetSegmentsSegments segments = null;
+  private List<GetSegmentsSegments> segments = null;
 
   @SerializedName("count")
   private Long count = null;
 
-  public GetSegments segments(GetSegmentsSegments segments) {
+  public GetSegments segments(List<GetSegmentsSegments> segments) {
     this.segments = segments;
     return this;
   }
@@ -38,11 +40,11 @@ public class GetSegments {
    * @return segments
   **/
   @ApiModelProperty(value = "")
-  public GetSegmentsSegments getSegments() {
+  public List<GetSegmentsSegments> getSegments() {
     return segments;
   }
 
-  public void setSegments(GetSegmentsSegments segments) {
+  public void setSegments(List<GetSegmentsSegments> segments) {
     this.segments = segments;
   }
 
