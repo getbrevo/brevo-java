@@ -40,7 +40,7 @@ public class SendTransacSms {
   private String sender = null;
 
   @SerializedName("tag")
-  private SendTransacSmsTag tag = null;
+  private String tag = null;
 
   /**
    * Type of the SMS. Marketing SMS messages are those sent typically with marketing content. Transactional SMS messages are sent to individuals and are triggered in response to some action, such as a sign-up, purchase, etc.
@@ -161,21 +161,21 @@ public class SendTransacSms {
     this.sender = sender;
   }
 
-  public SendTransacSms tag(SendTransacSmsTag tag) {
+  public SendTransacSms tag(String tag) {
     this.tag = tag;
     return this;
   }
 
    /**
-   * Tag of the message
+   * * Tag of the message. Can be a string or an array of strings (e.g., &quot;accountValidation&quot; or [&quot;tag1&quot;, &quot;tag2&quot;]).
    * @return tag
   **/
-  @ApiModelProperty(example = "accountValidation | [\"tag1\", \"tag2\"]", value = "Tag of the message")
-  public SendTransacSmsTag getTag() {
+   @ApiModelProperty(example = "accountValidation", value = "Tag of the message. Can be a string or an array of strings (e.g., \"accountValidation\" or [\"tag1\", \"tag2\"]).")
+   public String getTag() {
     return tag;
   }
 
-  public void setTag(SendTransacSmsTag tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 
