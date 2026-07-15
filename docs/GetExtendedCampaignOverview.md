@@ -58,6 +58,8 @@ ARCHIVE | &quot;archive&quot;
 QUEUED | &quot;queued&quot;
 SUSPENDED | &quot;suspended&quot;
 IN_PROCESS | &quot;in_process&quot;
+CANCELLED | &quot;cancelled&quot;
+IN_REVIEW | &quot;in_review&quot;
 
 
 

@@ -104,8 +104,12 @@ public class GetCampaignOverview {
     QUEUED("queued"),
     
     SUSPENDED("suspended"),
-    
-    IN_PROCESS("in_process");
+
+    IN_PROCESS("in_process"),
+
+    CANCELLED("cancelled"),
+
+    IN_REVIEW("in_review");
 
     private String value;
 
