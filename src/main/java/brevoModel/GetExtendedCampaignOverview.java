@@ -181,11 +181,17 @@ public class GetExtendedCampaignOverview {
   @SerializedName("utmCampaignValue")
   private String utmCampaignValue = null;
 
+  @SerializedName("utmContent")
+  private String utmContent = null;
+
   @SerializedName("utmSource")
   private String utmSource = null;
 
   @SerializedName("utmMedium")
   private String utmMedium = null;
+
+  @SerializedName("utmTerm")
+  private String utmTerm = null;
 
   @SerializedName("utmID")
   private Integer utmID = null;
@@ -508,6 +514,24 @@ public class GetExtendedCampaignOverview {
     this.utmCampaignValue = utmCampaignValue;
   }
 
+  public GetExtendedCampaignOverview utmContent(String utmContent) {
+    this.utmContent = utmContent;
+    return this;
+  }
+
+   /**
+   * The utm_content value associated with the campaign. Only present if a utm_content value was set on create or update.
+   * @return utmContent
+  **/
+  @ApiModelProperty(example = "hero_button", value = "The utm_content value associated with the campaign. Only present if a utm_content value was set on create or update.")
+  public String getUtmContent() {
+    return utmContent;
+  }
+
+  public void setUtmContent(String utmContent) {
+    this.utmContent = utmContent;
+  }
+
   public GetExtendedCampaignOverview utmSource(String utmSource) {
     this.utmSource = utmSource;
     return this;
@@ -542,6 +566,24 @@ public class GetExtendedCampaignOverview {
 
   public void setUtmMedium(String utmMedium) {
     this.utmMedium = utmMedium;
+  }
+
+  public GetExtendedCampaignOverview utmTerm(String utmTerm) {
+    this.utmTerm = utmTerm;
+    return this;
+  }
+
+   /**
+   * The utm_term value associated with the campaign. Only present if a utm_term value was set on create or update.
+   * @return utmTerm
+  **/
+  @ApiModelProperty(example = "summer_sale", value = "The utm_term value associated with the campaign. Only present if a utm_term value was set on create or update.")
+  public String getUtmTerm() {
+    return utmTerm;
+  }
+
+  public void setUtmTerm(String utmTerm) {
+    this.utmTerm = utmTerm;
   }
 
   public GetExtendedCampaignOverview utmID(Integer utmID) {
@@ -875,8 +917,10 @@ public class GetExtendedCampaignOverview {
     ObjectUtils.equals(this.winnerDelay, getExtendedCampaignOverview.winnerDelay) &&
     ObjectUtils.equals(this.sendAtBestTime, getExtendedCampaignOverview.sendAtBestTime) &&
     ObjectUtils.equals(this.utmCampaignValue, getExtendedCampaignOverview.utmCampaignValue) &&
+    ObjectUtils.equals(this.utmContent, getExtendedCampaignOverview.utmContent) &&
     ObjectUtils.equals(this.utmSource, getExtendedCampaignOverview.utmSource) &&
     ObjectUtils.equals(this.utmMedium, getExtendedCampaignOverview.utmMedium) &&
+    ObjectUtils.equals(this.utmTerm, getExtendedCampaignOverview.utmTerm) &&
     ObjectUtils.equals(this.utmID, getExtendedCampaignOverview.utmID) &&
     ObjectUtils.equals(this.testSent, getExtendedCampaignOverview.testSent) &&
     ObjectUtils.equals(this.header, getExtendedCampaignOverview.header) &&
@@ -898,7 +942,7 @@ public class GetExtendedCampaignOverview {
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(id, name, subject, previewText, type, status, scheduledAt, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, sendAtBestTime, utmCampaignValue, utmSource, utmMedium, utmID, testSent, header, footer, sender, replyTo, toField, htmlContent, shareLink, tag, createdAt, modifiedAt, inlineImageActivation, mirrorActive, recurring, sentDate, returnBounce);
+    return ObjectUtils.hashCodeMulti(id, name, subject, previewText, type, status, scheduledAt, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, sendAtBestTime, utmCampaignValue, utmContent, utmSource, utmMedium, utmTerm, utmID, testSent, header, footer, sender, replyTo, toField, htmlContent, shareLink, tag, createdAt, modifiedAt, inlineImageActivation, mirrorActive, recurring, sentDate, returnBounce);
   }
 
 
@@ -922,8 +966,10 @@ public class GetExtendedCampaignOverview {
     sb.append("    winnerDelay: ").append(toIndentedString(winnerDelay)).append("\n");
     sb.append("    sendAtBestTime: ").append(toIndentedString(sendAtBestTime)).append("\n");
     sb.append("    utmCampaignValue: ").append(toIndentedString(utmCampaignValue)).append("\n");
+    sb.append("    utmContent: ").append(toIndentedString(utmContent)).append("\n");
     sb.append("    utmSource: ").append(toIndentedString(utmSource)).append("\n");
     sb.append("    utmMedium: ").append(toIndentedString(utmMedium)).append("\n");
+    sb.append("    utmTerm: ").append(toIndentedString(utmTerm)).append("\n");
     sb.append("    utmID: ").append(toIndentedString(utmID)).append("\n");
     sb.append("    testSent: ").append(toIndentedString(testSent)).append("\n");
     sb.append("    header: ").append(toIndentedString(header)).append("\n");
