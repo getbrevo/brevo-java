@@ -85,6 +85,12 @@ public class CreateEmailCampaign {
   @SerializedName("utmCampaign")
   private String utmCampaign = null;
 
+  @SerializedName("utmContent")
+  private String utmContent = null;
+
+  @SerializedName("utmTerm")
+  private String utmTerm = null;
+
   @SerializedName("params")
   private Object params = null;
 
@@ -498,6 +504,42 @@ public class CreateEmailCampaign {
     this.utmCampaign = utmCampaign;
   }
 
+  public CreateEmailCampaign utmContent(String utmContent) {
+    this.utmContent = utmContent;
+    return this;
+  }
+
+   /**
+   * Customize the utm_content value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed
+   * @return utmContent
+  **/
+  @ApiModelProperty(example = "hero_button", value = "Customize the utm_content value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed")
+  public String getUtmContent() {
+    return utmContent;
+  }
+
+  public void setUtmContent(String utmContent) {
+    this.utmContent = utmContent;
+  }
+
+  public CreateEmailCampaign utmTerm(String utmTerm) {
+    this.utmTerm = utmTerm;
+    return this;
+  }
+
+   /**
+   * Customize the utm_term value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed
+   * @return utmTerm
+  **/
+  @ApiModelProperty(example = "summer_sale", value = "Customize the utm_term value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed")
+  public String getUtmTerm() {
+    return utmTerm;
+  }
+
+  public void setUtmTerm(String utmTerm) {
+    this.utmTerm = utmTerm;
+  }
+
   public CreateEmailCampaign params(Object params) {
     this.params = params;
     return this;
@@ -784,6 +826,8 @@ public class CreateEmailCampaign {
     ObjectUtils.equals(this.footer, createEmailCampaign.footer) &&
     ObjectUtils.equals(this.header, createEmailCampaign.header) &&
     ObjectUtils.equals(this.utmCampaign, createEmailCampaign.utmCampaign) &&
+    ObjectUtils.equals(this.utmContent, createEmailCampaign.utmContent) &&
+    ObjectUtils.equals(this.utmTerm, createEmailCampaign.utmTerm) &&
     ObjectUtils.equals(this.params, createEmailCampaign.params) &&
     ObjectUtils.equals(this.sendAtBestTime, createEmailCampaign.sendAtBestTime) &&
     ObjectUtils.equals(this.abTesting, createEmailCampaign.abTesting) &&
@@ -802,7 +846,7 @@ public class CreateEmailCampaign {
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(tag, sender, name, htmlContent, htmlUrl, templateId, scheduledAt, subject, previewText, replyTo, toField, recipients, attachmentUrl, inlineImageActivation, mirrorActive, footer, header, utmCampaign, params, sendAtBestTime, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, ipWarmupEnable, initialQuota, increaseRate, unsubscriptionPageId, updateFormId, emailExpirationDate);
+    return ObjectUtils.hashCodeMulti(tag, sender, name, htmlContent, htmlUrl, templateId, scheduledAt, subject, previewText, replyTo, toField, recipients, attachmentUrl, inlineImageActivation, mirrorActive, footer, header, utmCampaign, utmContent, utmTerm, params, sendAtBestTime, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, ipWarmupEnable, initialQuota, increaseRate, unsubscriptionPageId, updateFormId, emailExpirationDate);
   }
 
 
@@ -829,6 +873,8 @@ public class CreateEmailCampaign {
     sb.append("    footer: ").append(toIndentedString(footer)).append("\n");
     sb.append("    header: ").append(toIndentedString(header)).append("\n");
     sb.append("    utmCampaign: ").append(toIndentedString(utmCampaign)).append("\n");
+    sb.append("    utmContent: ").append(toIndentedString(utmContent)).append("\n");
+    sb.append("    utmTerm: ").append(toIndentedString(utmTerm)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    sendAtBestTime: ").append(toIndentedString(sendAtBestTime)).append("\n");
     sb.append("    abTesting: ").append(toIndentedString(abTesting)).append("\n");
