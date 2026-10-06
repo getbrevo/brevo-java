@@ -91,6 +91,15 @@ public class CreateEmailCampaign {
   @SerializedName("utmTerm")
   private String utmTerm = null;
 
+  @SerializedName("utmSource")
+  private String utmSource = null;
+
+  @SerializedName("utmMedium")
+  private String utmMedium = null;
+
+  @SerializedName("utmId")
+  private String utmId = null;
+
   @SerializedName("params")
   private Object params = null;
 
@@ -540,6 +549,60 @@ public class CreateEmailCampaign {
     this.utmTerm = utmTerm;
   }
 
+  public CreateEmailCampaign utmSource(String utmSource) {
+    this.utmSource = utmSource;
+    return this;
+  }
+
+   /**
+   * Customize the utm_source value. When omitted or empty, the utm_source entry from the account&#39;s global utm_settings is used if set; otherwise the account default (&#x60;brevo&#x60; or &#x60;sendinblue&#x60;) is used.
+   * @return utmSource
+  **/
+  @ApiModelProperty(example = "brevo", value = "Customize the utm_source value. When omitted or empty, the utm_source entry from the account's global utm_settings is used if set; otherwise the account default (`brevo` or `sendinblue`) is used.")
+  public String getUtmSource() {
+    return utmSource;
+  }
+
+  public void setUtmSource(String utmSource) {
+    this.utmSource = utmSource;
+  }
+
+  public CreateEmailCampaign utmMedium(String utmMedium) {
+    this.utmMedium = utmMedium;
+    return this;
+  }
+
+   /**
+   * Customize the utm_medium value. When omitted or empty, the utm_medium entry from the account&#39;s global utm_settings is used if set; otherwise the default &#x60;email&#x60; is used.
+   * @return utmMedium
+  **/
+  @ApiModelProperty(example = "email", value = "Customize the utm_medium value. When omitted or empty, the utm_medium entry from the account's global utm_settings is used if set; otherwise the default `email` is used.")
+  public String getUtmMedium() {
+    return utmMedium;
+  }
+
+  public void setUtmMedium(String utmMedium) {
+    this.utmMedium = utmMedium;
+  }
+
+  public CreateEmailCampaign utmId(String utmId) {
+    this.utmId = utmId;
+    return this;
+  }
+
+   /**
+   * Customize the utm_id value. Appears on outgoing tracking links alongside utm_campaign. When omitted or empty, the utm_id entry from the account&#39;s global utm_settings is used if enabled; otherwise no utm_id parameter is emitted.
+   * @return utmId
+  **/
+  @ApiModelProperty(example = "promo_042", value = "Customize the utm_id value. Appears on outgoing tracking links alongside utm_campaign. When omitted or empty, the utm_id entry from the account's global utm_settings is used if enabled; otherwise no utm_id parameter is emitted.")
+  public String getUtmId() {
+    return utmId;
+  }
+
+  public void setUtmId(String utmId) {
+    this.utmId = utmId;
+  }
+
   public CreateEmailCampaign params(Object params) {
     this.params = params;
     return this;
@@ -828,6 +891,9 @@ public class CreateEmailCampaign {
     ObjectUtils.equals(this.utmCampaign, createEmailCampaign.utmCampaign) &&
     ObjectUtils.equals(this.utmContent, createEmailCampaign.utmContent) &&
     ObjectUtils.equals(this.utmTerm, createEmailCampaign.utmTerm) &&
+    ObjectUtils.equals(this.utmSource, createEmailCampaign.utmSource) &&
+    ObjectUtils.equals(this.utmMedium, createEmailCampaign.utmMedium) &&
+    ObjectUtils.equals(this.utmId, createEmailCampaign.utmId) &&
     ObjectUtils.equals(this.params, createEmailCampaign.params) &&
     ObjectUtils.equals(this.sendAtBestTime, createEmailCampaign.sendAtBestTime) &&
     ObjectUtils.equals(this.abTesting, createEmailCampaign.abTesting) &&
@@ -846,7 +912,7 @@ public class CreateEmailCampaign {
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(tag, sender, name, htmlContent, htmlUrl, templateId, scheduledAt, subject, previewText, replyTo, toField, recipients, attachmentUrl, inlineImageActivation, mirrorActive, footer, header, utmCampaign, utmContent, utmTerm, params, sendAtBestTime, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, ipWarmupEnable, initialQuota, increaseRate, unsubscriptionPageId, updateFormId, emailExpirationDate);
+    return ObjectUtils.hashCodeMulti(tag, sender, name, htmlContent, htmlUrl, templateId, scheduledAt, subject, previewText, replyTo, toField, recipients, attachmentUrl, inlineImageActivation, mirrorActive, footer, header, utmCampaign, utmContent, utmTerm, utmSource, utmMedium, utmId, params, sendAtBestTime, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, ipWarmupEnable, initialQuota, increaseRate, unsubscriptionPageId, updateFormId, emailExpirationDate);
   }
 
 
@@ -875,6 +941,9 @@ public class CreateEmailCampaign {
     sb.append("    utmCampaign: ").append(toIndentedString(utmCampaign)).append("\n");
     sb.append("    utmContent: ").append(toIndentedString(utmContent)).append("\n");
     sb.append("    utmTerm: ").append(toIndentedString(utmTerm)).append("\n");
+    sb.append("    utmSource: ").append(toIndentedString(utmSource)).append("\n");
+    sb.append("    utmMedium: ").append(toIndentedString(utmMedium)).append("\n");
+    sb.append("    utmId: ").append(toIndentedString(utmId)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    sendAtBestTime: ").append(toIndentedString(sendAtBestTime)).append("\n");
     sb.append("    abTesting: ").append(toIndentedString(abTesting)).append("\n");

@@ -196,6 +196,9 @@ public class GetExtendedCampaignOverview {
   @SerializedName("utmID")
   private Integer utmID = null;
 
+  @SerializedName("utmId")
+  private String utmId = null;
+
   @SerializedName("testSent")
   private Boolean testSent = null;
 
@@ -502,10 +505,10 @@ public class GetExtendedCampaignOverview {
   }
 
    /**
-   * utm parameter associated with campaign
+   * The utm_campaign value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign.
    * @return utmCampaignValue
   **/
-  @ApiModelProperty(example = "myutm", value = "utm parameter associated with campaign")
+  @ApiModelProperty(example = "myutm", value = "The utm_campaign value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign.")
   public String getUtmCampaignValue() {
     return utmCampaignValue;
   }
@@ -520,10 +523,10 @@ public class GetExtendedCampaignOverview {
   }
 
    /**
-   * The utm_content value associated with the campaign. Only present if a utm_content value was set on create or update.
+   * The utm_content value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels.
    * @return utmContent
   **/
-  @ApiModelProperty(example = "hero_button", value = "The utm_content value associated with the campaign. Only present if a utm_content value was set on create or update.")
+  @ApiModelProperty(example = "hero_button", value = "The utm_content value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels.")
   public String getUtmContent() {
     return utmContent;
   }
@@ -538,10 +541,10 @@ public class GetExtendedCampaignOverview {
   }
 
    /**
-   * source of utm parameter
+   * The utm_source value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign, or the account default (&#x60;brevo&#x60; or &#x60;sendinblue&#x60;) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.
    * @return utmSource
   **/
-  @ApiModelProperty(example = "Brevo", value = "source of utm parameter")
+  @ApiModelProperty(example = "Brevo", value = "The utm_source value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the account default (`brevo` or `sendinblue`) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.")
   public String getUtmSource() {
     return utmSource;
   }
@@ -556,10 +559,10 @@ public class GetExtendedCampaignOverview {
   }
 
    /**
-   * medium parameter
+   * The utm_medium value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign, or the default &#x60;email&#x60; if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.
    * @return utmMedium
   **/
-  @ApiModelProperty(example = "EMAIL", value = "medium parameter")
+  @ApiModelProperty(example = "EMAIL", value = "The utm_medium value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the default `email` if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.")
   public String getUtmMedium() {
     return utmMedium;
   }
@@ -574,10 +577,10 @@ public class GetExtendedCampaignOverview {
   }
 
    /**
-   * The utm_term value associated with the campaign. Only present if a utm_term value was set on create or update.
+   * The utm_term value applied to the campaign&#39;s tracking links. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels.
    * @return utmTerm
   **/
-  @ApiModelProperty(example = "summer_sale", value = "The utm_term value associated with the campaign. Only present if a utm_term value was set on create or update.")
+  @ApiModelProperty(example = "summer_sale", value = "The utm_term value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels.")
   public String getUtmTerm() {
     return utmTerm;
   }
@@ -592,16 +595,34 @@ public class GetExtendedCampaignOverview {
   }
 
    /**
-   * utm id
+   * Legacy numeric utm_id value applied to the campaign&#39;s tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign&#39;s ID). For customer-supplied non-numeric values (for example &#x60;promo_042&#x60;), read utmId (String) instead. Kept for backward compatibility.
    * @return utmID
   **/
-  @ApiModelProperty(example = "10", value = "utm id")
+  @ApiModelProperty(example = "10", value = "Legacy numeric utm_id value applied to the campaign's tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign's ID). For customer-supplied non-numeric values (for example `promo_042`), read utmId (String) instead. Kept for backward compatibility.")
   public Integer getUtmID() {
     return utmID;
   }
 
   public void setUtmID(Integer utmID) {
     this.utmID = utmID;
+  }
+
+  public GetExtendedCampaignOverview utmId(String utmId) {
+    this.utmId = utmId;
+    return this;
+  }
+
+   /**
+   * The utm_id value applied to the campaign&#39;s tracking links, returned verbatim as a string. Falls back to your account&#39;s global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. Preferred field for new consumers — covers both numeric IDs and customer-supplied non-numeric strings.
+   * @return utmId
+  **/
+  @ApiModelProperty(example = "promo_042", value = "The utm_id value applied to the campaign's tracking links, returned verbatim as a string. Falls back to your account's global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. Preferred field for new consumers — covers both numeric IDs and customer-supplied non-numeric strings.")
+  public String getUtmId() {
+    return utmId;
+  }
+
+  public void setUtmId(String utmId) {
+    this.utmId = utmId;
   }
 
   public GetExtendedCampaignOverview testSent(Boolean testSent) {
@@ -922,6 +943,7 @@ public class GetExtendedCampaignOverview {
     ObjectUtils.equals(this.utmMedium, getExtendedCampaignOverview.utmMedium) &&
     ObjectUtils.equals(this.utmTerm, getExtendedCampaignOverview.utmTerm) &&
     ObjectUtils.equals(this.utmID, getExtendedCampaignOverview.utmID) &&
+    ObjectUtils.equals(this.utmId, getExtendedCampaignOverview.utmId) &&
     ObjectUtils.equals(this.testSent, getExtendedCampaignOverview.testSent) &&
     ObjectUtils.equals(this.header, getExtendedCampaignOverview.header) &&
     ObjectUtils.equals(this.footer, getExtendedCampaignOverview.footer) &&
@@ -942,7 +964,7 @@ public class GetExtendedCampaignOverview {
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(id, name, subject, previewText, type, status, scheduledAt, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, sendAtBestTime, utmCampaignValue, utmContent, utmSource, utmMedium, utmTerm, utmID, testSent, header, footer, sender, replyTo, toField, htmlContent, shareLink, tag, createdAt, modifiedAt, inlineImageActivation, mirrorActive, recurring, sentDate, returnBounce);
+    return ObjectUtils.hashCodeMulti(id, name, subject, previewText, type, status, scheduledAt, abTesting, subjectA, subjectB, splitRule, winnerCriteria, winnerDelay, sendAtBestTime, utmCampaignValue, utmContent, utmSource, utmMedium, utmTerm, utmID, utmId, testSent, header, footer, sender, replyTo, toField, htmlContent, shareLink, tag, createdAt, modifiedAt, inlineImageActivation, mirrorActive, recurring, sentDate, returnBounce);
   }
 
 
@@ -971,6 +993,7 @@ public class GetExtendedCampaignOverview {
     sb.append("    utmMedium: ").append(toIndentedString(utmMedium)).append("\n");
     sb.append("    utmTerm: ").append(toIndentedString(utmTerm)).append("\n");
     sb.append("    utmID: ").append(toIndentedString(utmID)).append("\n");
+    sb.append("    utmId: ").append(toIndentedString(utmId)).append("\n");
     sb.append("    testSent: ").append(toIndentedString(testSent)).append("\n");
     sb.append("    header: ").append(toIndentedString(header)).append("\n");
     sb.append("    footer: ").append(toIndentedString(footer)).append("\n");

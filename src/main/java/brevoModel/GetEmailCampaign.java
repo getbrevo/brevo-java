@@ -508,10 +508,10 @@ public class GetEmailCampaign {
   }
 
    /**
-   * utm parameter associated with campaign
+   * The utm_campaign value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign.
    * @return utmCampaignValue
   **/
-  @ApiModelProperty(example = "myutm", value = "utm parameter associated with campaign")
+  @ApiModelProperty(example = "myutm", value = "The utm_campaign value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign.")
   public String getUtmCampaignValue() {
     return utmCampaignValue;
   }
@@ -544,10 +544,10 @@ public class GetEmailCampaign {
   }
 
    /**
-   * source of utm parameter
+   * The utm_source value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the account default (`brevo` or `sendinblue`) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.
    * @return utmSource
   **/
-  @ApiModelProperty(example = "Brevo", value = "source of utm parameter")
+  @ApiModelProperty(example = "Brevo", value = "The utm_source value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the account default (`brevo` or `sendinblue`) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.")
   public String getUtmSource() {
     return utmSource;
   }
@@ -562,10 +562,10 @@ public class GetEmailCampaign {
   }
 
    /**
-   * medium parameter
+   * The utm_medium value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the default `email` if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.
    * @return utmMedium
   **/
-  @ApiModelProperty(example = "EMAIL", value = "medium parameter")
+  @ApiModelProperty(example = "EMAIL", value = "The utm_medium value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the default `email` if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign.")
   public String getUtmMedium() {
     return utmMedium;
   }
@@ -598,10 +598,10 @@ public class GetEmailCampaign {
   }
 
    /**
-   * utm id
+   * Legacy numeric utm_id value applied to the campaign&#39;s tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign&#39;s ID). For customer-supplied non-numeric values (for example &#x60;promo_042&#x60;), read the string utmId field instead. Kept for backward compatibility.
    * @return utmID
   **/
-  @ApiModelProperty(example = "10", value = "utm id")
+  @ApiModelProperty(example = "10", value = "Legacy numeric utm_id value applied to the campaign's tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign's ID). For customer-supplied non-numeric values (for example `promo_042`), read the string utmId field instead. Kept for backward compatibility.")
   public Integer getUtmID() {
     return utmID;
   }
