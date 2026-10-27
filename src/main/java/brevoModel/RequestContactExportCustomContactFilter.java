@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * Set the filter for the contacts to be exported.
@@ -30,7 +31,7 @@ import java.io.IOException;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:36:05.341+05:30")
 public class RequestContactExportCustomContactFilter {
   /**
-   * Mandatory if neither actionForEmailCampaigns nor actionForSmsCampaigns is passed. This will export the contacts on the basis of provided action applied on contacts as per the list id. * allContacts - Fetch the list of all contacts for a particular list. * subscribed &amp; unsubscribed - Fetch the list of subscribed / unsubscribed (blacklisted via any means) contacts for a particular list. * unsubscribedPerList - Fetch the list of contacts that are unsubscribed from a particular list only. 
+   * Mandatory if neither actionForEmailCampaigns nor actionForSmsCampaigns is passed. This will export the contacts on the basis of the provided action, restricted to the contacts selected by the other filters below. * allContacts - Fetch all the selected contacts. * subscribed &amp; unsubscribed - Fetch the subscribed / unsubscribed (blacklisted via any means) contacts among the selected contacts. * unsubscribedPerList - Fetch the contacts that are unsubscribed from the given listId only; this action requires listId. The selection must be narrowed by at least one of listId, segmentId, modifiedSince or createdSince. Any of them can be combined with the action, so for example unsubscribed together with modifiedSince exports the contacts that are currently blocklisted and were modified after the given date-time, with no list or segment involved. 
    */
   @JsonAdapter(ActionForContactsEnum.Adapter.class)
   public enum ActionForContactsEnum {
@@ -207,16 +208,22 @@ public class RequestContactExportCustomContactFilter {
   @SerializedName("smsCampaignId")
   private Long smsCampaignId = null;
 
+  @SerializedName("createdSince")
+  private OffsetDateTime createdSince = null;
+
+  @SerializedName("modifiedSince")
+  private OffsetDateTime modifiedSince = null;
+
   public RequestContactExportCustomContactFilter actionForContacts(ActionForContactsEnum actionForContacts) {
     this.actionForContacts = actionForContacts;
     return this;
   }
 
    /**
-   * Mandatory if neither actionForEmailCampaigns nor actionForSmsCampaigns is passed. This will export the contacts on the basis of provided action applied on contacts as per the list id. * allContacts - Fetch the list of all contacts for a particular list. * subscribed &amp; unsubscribed - Fetch the list of subscribed / unsubscribed (blacklisted via any means) contacts for a particular list. * unsubscribedPerList - Fetch the list of contacts that are unsubscribed from a particular list only. 
+   * Mandatory if neither actionForEmailCampaigns nor actionForSmsCampaigns is passed. This will export the contacts on the basis of the provided action, restricted to the contacts selected by the other filters below. * allContacts - Fetch all the selected contacts. * subscribed &amp; unsubscribed - Fetch the subscribed / unsubscribed (blacklisted via any means) contacts among the selected contacts. * unsubscribedPerList - Fetch the contacts that are unsubscribed from the given listId only; this action requires listId. The selection must be narrowed by at least one of listId, segmentId, modifiedSince or createdSince. Any of them can be combined with the action, so for example unsubscribed together with modifiedSince exports the contacts that are currently blocklisted and were modified after the given date-time, with no list or segment involved. 
    * @return actionForContacts
   **/
-  @ApiModelProperty(value = "Mandatory if neither actionForEmailCampaigns nor actionForSmsCampaigns is passed. This will export the contacts on the basis of provided action applied on contacts as per the list id. * allContacts - Fetch the list of all contacts for a particular list. * subscribed & unsubscribed - Fetch the list of subscribed / unsubscribed (blacklisted via any means) contacts for a particular list. * unsubscribedPerList - Fetch the list of contacts that are unsubscribed from a particular list only. ")
+  @ApiModelProperty(value = "Mandatory if neither actionForEmailCampaigns nor actionForSmsCampaigns is passed. This will export the contacts on the basis of the provided action, restricted to the contacts selected by the other filters below. * allContacts - Fetch all the selected contacts. * subscribed & unsubscribed - Fetch the subscribed / unsubscribed (blacklisted via any means) contacts among the selected contacts. * unsubscribedPerList - Fetch the contacts that are unsubscribed from the given listId only; this action requires listId. The selection must be narrowed by at least one of listId, segmentId, modifiedSince or createdSince. Any of them can be combined with the action, so for example unsubscribed together with modifiedSince exports the contacts that are currently blocklisted and were modified after the given date-time, with no list or segment involved. ")
   public ActionForContactsEnum getActionForContacts() {
     return actionForContacts;
   }
@@ -267,10 +274,10 @@ public class RequestContactExportCustomContactFilter {
   }
 
    /**
-   * ID of the list. This is mandatory if actionForContacts is specified and segmentId is not provided. Either segmentId or listId must be included.
+   * ID of the list. Considered only if actionForContacts is passed. At least one of listId, segmentId, modifiedSince or createdSince must be provided; listId and segmentId cannot be used together.
    * @return listId
   **/
-  @ApiModelProperty(example = "2", value = "ID of the list. This is mandatory if actionForContacts is specified and segmentId is not provided. Either segmentId or listId must be included.")
+  @ApiModelProperty(example = "2", value = "ID of the list. Considered only if actionForContacts is passed. At least one of listId, segmentId, modifiedSince or createdSince must be provided; listId and segmentId cannot be used together.")
   public Long getListId() {
     return listId;
   }
@@ -285,10 +292,10 @@ public class RequestContactExportCustomContactFilter {
   }
 
    /**
-   * ID of the segment. This is mandatory if actionForContacts is specified and listId is not provided. Either segmentId or listId must be included. 
+   * ID of the segment. Considered only if actionForContacts is passed. At least one of listId, segmentId, modifiedSince or createdSince must be provided; listId and segmentId cannot be used together.
    * @return segmentId
   **/
-  @ApiModelProperty(example = "2", value = "ID of the segment. This is mandatory if actionForContacts is specified and listId is not provided. Either segmentId or listId must be included. ")
+  @ApiModelProperty(example = "2", value = "ID of the segment. Considered only if actionForContacts is passed. At least one of listId, segmentId, modifiedSince or createdSince must be provided; listId and segmentId cannot be used together.")
   public Long getSegmentId() {
     return segmentId;
   }
@@ -333,6 +340,42 @@ public class RequestContactExportCustomContactFilter {
     this.smsCampaignId = smsCampaignId;
   }
 
+  public RequestContactExportCustomContactFilter createdSince(OffsetDateTime createdSince) {
+    this.createdSince = createdSince;
+    return this;
+  }
+
+   /**
+   * Considered only if actionForContacts is passed, ignored otherwise. Exports only the contacts created after the given date-time. The value must be a full RFC 3339 date-time: a date-only value such as 2026-10-01 is rejected, and so is a value without a timezone, so pass either the Z suffix or an explicit +HH:MM offset.
+   * @return createdSince
+  **/
+  @ApiModelProperty(example = "2026-10-01T00:00:00.000Z", value = "Considered only if actionForContacts is passed, ignored otherwise. Exports only the contacts created after the given date-time. The value must be a full RFC 3339 date-time: a date-only value such as 2026-10-01 is rejected, and so is a value without a timezone, so pass either the Z suffix or an explicit +HH:MM offset.")
+  public OffsetDateTime getCreatedSince() {
+    return createdSince;
+  }
+
+  public void setCreatedSince(OffsetDateTime createdSince) {
+    this.createdSince = createdSince;
+  }
+
+  public RequestContactExportCustomContactFilter modifiedSince(OffsetDateTime modifiedSince) {
+    this.modifiedSince = modifiedSince;
+    return this;
+  }
+
+   /**
+   * Considered only if actionForContacts is passed, ignored otherwise. Exports only the contacts modified after the given date-time. The value must be a full RFC 3339 date-time: a date-only value such as 2026-10-01 is rejected, and so is a value without a timezone, so pass either the Z suffix or an explicit +HH:MM offset. Note that a contact's modification date changes on any update, not only on a subscription change.
+   * @return modifiedSince
+  **/
+  @ApiModelProperty(example = "2026-10-01T00:00:00.000Z", value = "Considered only if actionForContacts is passed, ignored otherwise. Exports only the contacts modified after the given date-time. The value must be a full RFC 3339 date-time: a date-only value such as 2026-10-01 is rejected, and so is a value without a timezone, so pass either the Z suffix or an explicit +HH:MM offset. Note that a contact's modification date changes on any update, not only on a subscription change.")
+  public OffsetDateTime getModifiedSince() {
+    return modifiedSince;
+  }
+
+  public void setModifiedSince(OffsetDateTime modifiedSince) {
+    this.modifiedSince = modifiedSince;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -349,12 +392,14 @@ public class RequestContactExportCustomContactFilter {
     ObjectUtils.equals(this.listId, requestContactExportCustomContactFilter.listId) &&
     ObjectUtils.equals(this.segmentId, requestContactExportCustomContactFilter.segmentId) &&
     ObjectUtils.equals(this.emailCampaignId, requestContactExportCustomContactFilter.emailCampaignId) &&
-    ObjectUtils.equals(this.smsCampaignId, requestContactExportCustomContactFilter.smsCampaignId);
+    ObjectUtils.equals(this.smsCampaignId, requestContactExportCustomContactFilter.smsCampaignId) &&
+    ObjectUtils.equals(this.createdSince, requestContactExportCustomContactFilter.createdSince) &&
+    ObjectUtils.equals(this.modifiedSince, requestContactExportCustomContactFilter.modifiedSince);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(actionForContacts, actionForEmailCampaigns, actionForSmsCampaigns, listId, segmentId, emailCampaignId, smsCampaignId);
+    return ObjectUtils.hashCodeMulti(actionForContacts, actionForEmailCampaigns, actionForSmsCampaigns, listId, segmentId, emailCampaignId, smsCampaignId, createdSince, modifiedSince);
   }
 
 
@@ -370,6 +415,8 @@ public class RequestContactExportCustomContactFilter {
     sb.append("    segmentId: ").append(toIndentedString(segmentId)).append("\n");
     sb.append("    emailCampaignId: ").append(toIndentedString(emailCampaignId)).append("\n");
     sb.append("    smsCampaignId: ").append(toIndentedString(smsCampaignId)).append("\n");
+    sb.append("    createdSince: ").append(toIndentedString(createdSince)).append("\n");
+    sb.append("    modifiedSince: ").append(toIndentedString(modifiedSince)).append("\n");
     sb.append("}");
     return sb.toString();
   }
